@@ -1,1 +1,1 @@
-# XrayPy
+# galaXy
