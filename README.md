@@ -5,6 +5,8 @@ Features:
 - Search bar by coordinates
 - Mark sources on your copy of the web app
 - Automatic webapp generation - only fits files required
+- Compression - all files are minified
+- Documentation - code is all documented
 - Dark Theme
 
 ## Search Bar
