@@ -106,7 +106,7 @@ for file in files:
 
       
     # to eliminate unwanted observations (if needed)
-    threshold = -1 # set to -1 to include all files currently
+    threshold = 35 # set to -1 to include all files currently
 
     if np.sum(df['Count']) > threshold:
 
@@ -232,7 +232,37 @@ for file in files:
 
         itercount += 1
 
-            
+
+    else:
+        # Build DataFrame
+        count,times=0,0
+        for index, row in df.iterrows():
+            if df['exp'][index]>0:
+                count = count + row['Count']
+                times = times + 3.241039999999654/1000
+            elif df['exp'][index]==0:
+                count = count + 0
+                times = times + 3.241039999999654/1000
+          # creating metadata
+
+        # name of source
+        file = file.split("_lc.fits")
+        file = file[0].split("_")
+        obsid = file[1]
+        all_files.append({"Source":file[0],"ObsID":obsid,"Counts":count})
+
+        # to calculate observation time and count rate
+        rate = count/times
+        all_files[itercount]['Obs. Time'] = times
+        all_files[itercount]['Count Rate'] = rate
+
+        #progress
+        print(f"{itercount+1} of {total_files} processed")
+
+        # close fits
+        hdu_list.close()
+
+        itercount += 1
 # delete files after processing
 if deletion == "y":
     print("Deleting files...")
