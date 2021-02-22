@@ -15,11 +15,16 @@ Features:
 - Fill field
 <img src="search.png">
 - Output
-<img src="output.png">
+<img src="result.png">
 
 ## Bookmark
 - Click checkbox
 - The app will save the rows you mark in local storage, on your PC.
+
+<img src="highlighting.png">
+
+-localStorage:
+<img src="localstorage.png">
 
 ## Web App Generation
 - Keep files to process in same directory as `main.py` and `htmlcode.py`
