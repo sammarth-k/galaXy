@@ -58,21 +58,21 @@ The runtime is in seconds (this was for 81 files in 3 different binnings)
 - Open `./app/index/html` once you get this message. The web app will be displayed in your default browser.
 
 ## FAQs
-1. Is the app connected to a database?
+#### 1. Is the app connected to a database?
 No, the metadata is stored as a list of dictionaries (Python), which is later passed on the the JavaScript as an array of collections (equivalent of list and dictionary). Figures are stored on your device in ./app/images
 
-2. Will the rows I bookmark show on someone else's copy?
+#### 2. Will the rows I bookmark show on someone else's copy?
 No, the row numbers are saved in `localHost` and hence only on your device. You could share the key-value to someone. The key is `"marked"` and value will vary.
 An input field for bookmarks is however a possible feature for a future version
 
-3. Are there any server functions?
+#### 3. Are there any server functions?
 No, all data is stored and all scripts are run on the user's device
 
-4. Is this program only for FITS files
+#### 4. Is this program only for FITS files
 Yes, but it can be modified to accomodate txt files as well
 
-5. How fast is the program?
+#### 5. How fast is the program?
 The speed of the program varies based on the total number of plots required to be generated.
 
-6. How big is the app?
+#### 6. How big is the app?
 The app can become huge for large datasets. That's why in the `main.py` file I added a line to ignore plotting files with low photon counts to save space and also time.
