@@ -16,6 +16,7 @@ Features:
 <img src="search.png">
 - Output
 <img src="result.png">
+(hyperlink to the row)
 
 ## Bookmark
 - Click checkbox
@@ -23,7 +24,7 @@ Features:
 
 <img src="highlighting.png">
 
--localStorage:
+-localStorage
 <img src="localstorage.png">
 
 ## Web App Generation
@@ -68,3 +69,9 @@ No, all data is stored and all scripts are run on the user's device
 
 4. Is this program only for FITS files
 Yes, but it can be modified to accomodate txt files as well
+
+5. How fast is the program?
+The speed of the program varies based on the total number of plots required to be generated.
+
+6. How big is the app?
+The app can become huge for large datasets. That's why in the `main.py` file I added a line to ignore plotting files with low photon counts to save space and also time.
