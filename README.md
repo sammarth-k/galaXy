@@ -25,6 +25,7 @@ Features:
 <img src="highlighting.png">
 
 -localStorage
+
 <img src="localstorage.png">
 
 ## Web App Generation
