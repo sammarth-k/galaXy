@@ -24,7 +24,7 @@ Features:
 
 <img src="highlighting.png">
 
--localStorage
+- localStorage
 
 <img src="localstorage.png">
 
