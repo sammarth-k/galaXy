@@ -1,5 +1,5 @@
 # galaXy
-Build webapps to view and analyse data.
+Build webapps automatically to view and analyse data. All you need are FITS files and a computer.
 
 Features:
 - Search bar by coordinates
