@@ -211,7 +211,7 @@ for file in files:
             plt.ylabel(r'Photon Count',fontsize=25)
             plt.rc('xtick', labelsize=30)
             plt.rc('ytick', labelsize=22)
-            plt.title(f"Binned Photon Count {file[0]} [{itercount+1}] for {grpsize} bins = {grpsize*3.24104} s")
+            plt.title(f"Binned Photon Count {file[0]} [{itercount+1}] for {grpsize} sec = {grpsize//3.24104} s")
             plt.plot(f, avg)
 
             #adjusting the scale of axis
