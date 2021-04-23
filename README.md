@@ -76,3 +76,6 @@ The speed of the program varies based on the total number of plots required to b
 
 #### 6. How big is the app?
 The app can become huge for large datasets. That's why in the `main.py` file I added a line to ignore plotting files with low photon counts to save space and also time.
+
+## Updates
+1. 23 April 2021: Drastic reduction in memory consumption
