@@ -1,5 +1,6 @@
 import time
 import htmlcode
+import gc
 
 # start stopwatch
 begin = time.time()
@@ -12,7 +13,10 @@ try:
     import numpy as np
     import glob, os
     import matplotlib.pyplot as plt
-
+    import matplotlib
+    matplotlib.use('agg')
+    plt.ioff()
+    
 except:
     print("""Please make sure the following modules have been installed:
 
@@ -72,7 +76,7 @@ try:
 except:
     pass
 
-# lightcureves directory
+# lightcurves directory
 try:
     os.mkdir("./app/images/lightcurves")
 except:
@@ -98,18 +102,21 @@ for file in files:
     # get data from files
     hdu_list = fits.open(file, memmap=True)
     evt_data = Table(hdu_list[1].data)
-
-    # initialising DataFrame
+    
+    try:
+        del df, f
+        gc.collect()
+    except:
+        pass
     df = pd.DataFrame()
     df['Count'] = list(evt_data['COUNTS'])
     df['exp'] = list(evt_data['EXPOSURE'])
-
-      
+    
     # to eliminate unwanted observations (if needed)
-    threshold = 35 # set to -1 to include all files currently
+    threshold = 20 # set to -1 to include all files 
 
-    if np.sum(df['Count']) > threshold:
-
+    if np.sum(df.Count) > threshold:
+        
         # cumulative plots
         filesave = "./app/images/cumulatives/cumulative_" + str(itercount+1) + ".png" # name to save file by
 
@@ -165,7 +172,7 @@ for file in files:
 
             photons_in_group = []
 
-            group_size = int(grpsize/3.24) # changable
+            group_size = int(grpsize/3.24)
 
             temp1 = []
 
@@ -211,7 +218,7 @@ for file in files:
             plt.ylabel(r'Photon Count',fontsize=25)
             plt.rc('xtick', labelsize=30)
             plt.rc('ytick', labelsize=22)
-            plt.title(f"Binned Photon Count {file[0]} [{itercount+1}] for {grpsize} sec = {grpsize//3.24104} s")
+            plt.title(f"Binned Photon Count {file[0]} [{itercount+1}] for {group_size} bins = {grpsize} s")
             plt.plot(f, avg)
 
             #adjusting the scale of axis
@@ -223,6 +230,8 @@ for file in files:
             f.savefig(filesave)
             
             plt.close()
+            f.clear()
+            
         
         #progress
         print(f"{itercount+1} of {total_files} processed")
