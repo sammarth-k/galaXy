@@ -5,7 +5,7 @@ def head(galaxy):
 
 # top of table
 def table_top(binnings):
-    html = f"""<table align="center"> <tr id="head"> <th> &check; </th> <th> S.No. </th> <th> Source </th> <th> ObsID </th> <th> Total Counts </th> <th> Observation Time (ks) </th> <th> Count Rate (ks)</th> <th> Cumulative Plot </th>"""
+    html = f"""<table align="center"> <tr id="head"> <th> &check; </th> <th> S.No.</th><th>Source</th><th>ObsID</th><th>Total Counts</th><th>Observation Time(ks)</th><th>Count Rate(ks)</th><th>Cumulative Plot</th>"""
     for binning in binnings:
         html += f"""<th>Lightcurve ({binning}s)</th>"""
     html += """</tr>"""
@@ -13,17 +13,16 @@ def table_top(binnings):
 
 # rows
 def table_row(dict, count, binnings):
-    html = f"""<tr id='{count}'> <td> <input type="checkbox" class="input" onchange="highlight({count},this)"> </td><td>{count}</td><td>{dict['Source']}</td><td>{dict['ObsID']}</td><td>{dict['Counts']}</td><td>{round(dict['Obs. Time'],2)}</td><td>{round(dict['Count Rate'],2)}</td><td> <a href="./images/cumulatives/cumulative_{count}.png" target="_blank">Cumulative</a> </td>"""
+    html = f"""<tr id='{count}'><td><input type="checkbox" class="input" onchange="highlight({count},this)"></td><td>{count}</td><td>{dict['Source']}</td><td>{dict['ObsID']}</td><td>{dict['Counts']}</td><td>{round(dict['Obs. Time'],2)}</td><td>{round(dict['Count Rate'],2)}</td><td><a href="./images/cumulatives/cumulative_{count}.png" target="_blank">Cumulative</a></td>"""
     for binning in binnings:
-        html += f"""<td><a href="./images/lightcurves/{binning}/lightcurve_{count}.png" target="_blank"> Lightcurve ({binning}s)</a></td>
-        """
+        html += f"""<td><a href="./images/lightcurves/{binning}/lightcurve_{count}.png" target="_blank">{binning}</a></td>"""
 
     return html
 
 # bottom part of file
 def table_bottom():
     html = """
-    </table> <br><br><br><br></body> <footer id="footer"> Developed and Designed by Sammarth Kumar. Created with <span class="h">&#10084;</span> for the astro community </footer> </html> <script src="./js/script.js"></script>
+    </table><br><br><br><br></body><footer id="footer">Developed and Designed by Sammarth Kumar. Created with <span class="h">&#10084;</span> for the astro community </footer></html> <script src="./js/script.js"></script>
     """
     return html
 
