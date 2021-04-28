@@ -1,4 +1,4 @@
-# galaXy
+# galaXy.lc
 Build webapps automatically to view and analyse data. All you need are FITS files and a computer.
 
 Features:
