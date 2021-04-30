@@ -79,3 +79,4 @@ The app can become huge for large datasets. That's why in the `main.py` file I a
 
 ## Updates
 1. 23 April 2021: Drastic reduction in memory consumption
+2. 30 April 2021: Code optimization
