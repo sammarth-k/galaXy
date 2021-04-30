@@ -213,8 +213,7 @@ for file in files:
             plt.ylabel(r'Photon Count', fontsize=25)
             plt.rc('xtick', labelsize=30)
             plt.rc('ytick', labelsize=22)
-            plt.title(
-                f"Binned Photon Count {filename} for {group_size} bins = {grpsize} s")
+            plt.title(f"Binned Photon Count {filename} for {group_size} bins = {grpsize} s")
             plt.plot(f, avg)
 
             # adjusting the scale of axis
@@ -230,10 +229,12 @@ for file in files:
     hdu_list.close()
 
     # progress
-    print(f"{itercount+1} of {total_files} processed")
+    print(f"Progress: {itercount+1} of {total_files} processed", end="\r)
     
     itercount += 1
 
+print("Plots successfully generated...")
+          
 # delete files after processing
 if deletion == "y":
     print("Deleting files...")
