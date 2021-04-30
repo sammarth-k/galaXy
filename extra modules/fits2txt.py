@@ -2,7 +2,7 @@ def f2t():
     '''
     This function converts all fits files in the current working directory to txt files
     '''
-    # importing modules 
+    # importing modules
     try:
         from astropy.table import Table
         from astropy.io import fits
@@ -25,11 +25,12 @@ def f2t():
         files.append(file)
 
     # list of columns
-    cols = "TIME_BIN TIME_MIN TIME TIME_MAX COUNTS STAT_ERR AREA EXPOSURE COUNT_RATE COUNT_RATE_ERR"
-    cols = cols.split(" ")
+    cols = ['TIME_BIN', 'TIME_MIN', 'TIME', 'TIME_MAX', 'COUNTS',
+            'STAT_ERR', 'AREA', 'EXPOSURE', 'COUNT_RATE', 'COUNT_RATE_ERR']
 
     # convert files
     for file in files:
+
         # accessing fits data
         hdu_list = fits.open(file, memmap=True)
         evt_data = Table(hdu_list[1].data)
@@ -43,3 +44,6 @@ def f2t():
 
         # writing to file
         df.to_csv(f"./textfiles/{file}.txt", index=False, sep=" ")
+
+
+f2t()
