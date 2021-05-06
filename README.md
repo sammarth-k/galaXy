@@ -1,6 +1,8 @@
-# galX-C
+# galaXy
 
-galX-C is an automated software capable of processing thousands and thousands of raw lightcurves
+galaXy is an automated software capable of processing thousands and thousands of raw lightcurves
+
+It is an upgraded version of <a href="https://github.com/sammarth-k/galaXy.lc">galaXy.lc</a> with a better UI, ML capabilities and more analysis features.
 
 ## Documentation:
 
