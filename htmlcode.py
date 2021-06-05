@@ -3,6 +3,7 @@ def head(galaxy):
     html = f"""<html> <head><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="./css/style.css" rel="stylesheet"> <meta name="author" content="Sammarth Kumar"> <link rel="shortcut icon" type="image/x-icon" href="./images/logo.svg"/> <title>{galaxy} Data Access System</title> </head> <body onload="myfunc()"> <div id="loader" class="visible"> <img alt="Image" alt="load" src="./images/logo.svg"> </div><div id="searchbar"> <button id="search" onclick="search()">🔍</button> <div id="field"> <input id="searchfield" type="text" placeholder="Enter source coordinates"> <button onclick="searchbar(document.getElementById('searchfield').value)">Submit</button> <button onclick="document.getElementById('searchfield').value='';">Clear</button> <div id="displayres"></div></div></div><header name="header"> <br><br><br><br><h1 align="center">{galaxy} Data Access System</h1> <br><br><br><br>"""
     return html
 
+
 # top of table
 def table_top(binnings):
     html = f"""<table align="center"> <tr id="head"> <th> &check; </th> <th> S.No.</th><th>Source</th><th>ObsID</th><th>Total Counts</th><th>Observation Time(ks)</th><th>Count Rate(ks)</th><th>Cumulative Plot</th>"""
@@ -11,13 +12,15 @@ def table_top(binnings):
     html += """</tr>"""
     return html
 
+
 # rows
 def table_row(dict, count, binnings):
-    html = f"""<tr id='{count}'><td><input type="checkbox" class="input" onchange="highlight({count},this)"></td><td>{count}</td><td>{dict['Source']}</td><td>{dict['ObsID']}</td><td>{dict['Counts']}</td><td>{round(dict['Obs. Time'],2)}</td><td>{round(dict['Count Rate'],2)}</td><td><a href="./images/cumulatives/cumulative_{count}.png" target="_blank">Cumulative</a></td>"""
+    html = f"""<tr id='{count}'><td><input type="checkbox" class="input" onchange="h({count},this)"></td><td>{count}</td><td>{dict['Source']}</td><td>{dict['ObsID']}</td><td>{dict['Counts']}</td><td>{round(dict['Obs. Time'],2)}</td><td>{round(dict['Count Rate'],2)}</td><td><a href="./images/cumulatives/cumulative_{count}.png" target="_blank">Cumulative</a></td>"""
     for binning in binnings:
         html += f"""<td><a href="./images/lightcurves/{binning}/lightcurve_{count}.png" target="_blank">{binning}</a></td>"""
 
     return html
+
 
 # bottom part of file
 def table_bottom():
@@ -26,15 +29,22 @@ def table_bottom():
     """
     return html
 
+
 # css code
 def css():
     css = "html{scroll-behavior:smooth;font-family:sans-serif}body{margin:2px;background:#2c2c2c;color:#f5f5f5}#loader{z-index:2;position:fixed;width:100%;height:100%;background:#2c2c2c;color:#f5f5f5;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;vertical-align:middle}#loader img{margin:auto}a{color:#ff417a;text-decoration:none;-webkit-transition:.8s color;-o-transition:.8s color;transition:.8s color}a:hover{color:#f5f5f5}table{border:2px solid #ff417a;text-align:center;padding:0}td{padding:.4rem}td:not(:last-child){border-right:1px solid #f5f5f5}tr{border-bottom:1px solid #f5f5f5;-webkit-transition:1s background;-o-transition:1s background;transition:1s background}th{padding:1rem}#head{background:#ff417a}#search{font-size:1.5rem;cursor:pointer;z-index:1;position:fixed;top:0}#field{margin:auto;position:fixed;z-index:1;top:3rem;padding:1rem;border:2px solid #ff417a;border-radius:5px;-webkit-transform:translateX(-30rem);-ms-transform:translateX(-30rem);transform:translateX(-30rem);background:#2c2c2cee;-webkit-transition:1s -webkit-transform;transition:1s -webkit-transform;-o-transition:1s transform;transition:1s transform;transition:1s transform,1s -webkit-transform}#field input{border:1px solid #ff417a;padding:.2rem;color:#f5f5f5;background:#2c2c2c;border-radius:5px;font-size:1rem;margin-bottom:.2rem}#field #displayres{padding-top:2px}button{border:none;padding:.3rem .4rem;font-size:1rem;border-radius:5px;background:#ff417a;color:#f5f5f5;text-align:center;margin:.1rem}footer{background:#2c2c2c;z-index:1;position:fixed;bottom:0;text-align:center;width:100%;padding:8px 16px}.h{color:#ff417a}"
     return css
 
+
 # javascript code
 def js(ob):
-    js = "tosearch=" + ob + """;function searchbar(obj){src=obj; for (let e=0; e < tosearch.length; e++){const t=tosearch[e]; if(t['Source'].includes(src)){document.getElementById("displayres").innerHTML="<a href='#" + String(e + 1) + "'>" + t.Source + "</a>";}}}function myfunc(){document.getElementById("loader").style.display="none"; if (localStorage.getItem("marked")==undefined){localStorage.setItem("marked", "");}else{if (localStorage.getItem("marked") !==""){array=localStorage.getItem("marked"); array=array.split(","); for (let index=0; index < array.length; index++){const element=parseInt(array[index]); document.getElementsByClassName("input")[element - 1].checked=true; document.getElementById(element).style.backgroundColor="#FF417Aaa";}}}}function highlight(ob, box){if (box.checked==false){document.getElementById(ob).style.background="none"; array=localStorage.getItem("marked"); array=array.split(","); if (array.length==1){array=[];}else{console.log(array); array=array.splice(array.indexOf(ob) - 1, 1);}array=array.toString(); localStorage.setItem("marked", array);}else{document.getElementById(ob).style.background="#FF417Aaa"; array=localStorage.getItem("marked"); array=array.split(","); array.push([ob]); if (array[0]===""){array.shift();}array=array.toString(); localStorage.setItem("marked", array);}}function search(){if (document.getElementById("field").style.transform=="translateX(0rem)"){document.getElementById("field").style.transform="translateX(-30rem)";}else{document.getElementById("field").style.transform="translateX(0rem)";}}"""
+    js = (
+        "tosearch="
+        + ob
+        + """;function searchbar(obj){src=obj; for (let e=0; e < tosearch.length; e++){const t=tosearch[e]; if(t['Source'].includes(src)){document.getElementById("displayres").innerHTML="<a href='#" + String(e + 1) + "'>" + t.Source + "</a>";}}}function myfunc(){document.getElementById("loader").style.display="none"; if (localStorage.getItem("marked")==undefined){localStorage.setItem("marked", "");}else{if (localStorage.getItem("marked") !==""){array=localStorage.getItem("marked"); array=array.split(","); for (let index=0; index < array.length; index++){const element=parseInt(array[index]); document.getElementsByClassName("input")[element - 1].checked=true; document.getElementById(element).style.backgroundColor="#FF417Aaa";}}}}function h(ob, box){if (box.checked==false){document.getElementById(ob).style.background="none"; array=localStorage.getItem("marked"); array=array.split(","); if (array.length==1){array=[];}else{console.log(array); array=array.splice(array.indexOf(ob) - 1, 1);}array=array.toString(); localStorage.setItem("marked", array);}else{document.getElementById(ob).style.background="#FF417Aaa"; array=localStorage.getItem("marked"); array=array.split(","); array.push([ob]); if (array[0]===""){array.shift();}array=array.toString(); localStorage.setItem("marked", array);}}function search(){if (document.getElementById("field").style.transform=="translateX(0rem)"){document.getElementById("field").style.transform="translateX(-30rem)";}else{document.getElementById("field").style.transform="translateX(0rem)";}}"""
+    )
     return js
+
 
 # logo svg code
 def logo():
