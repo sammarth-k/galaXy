@@ -60,6 +60,24 @@ The runtime is in seconds (this was for 81 files in 3 different binnings)
 
 - Open `./app/index/html` once you get this message. The web app will be displayed in your default browser.
 
+## Acknowledgements
+If you use galaXy in your research, please acknowledge it as so:
+
+### Avaialable galaXy web apps
+```tex
+This work has made use of the data products of {\it galaXy} (\url{https://github.com/sammarth-k/galaXy}), developed by Sammarth Kumar.
+```
+ 
+### Software
+```tex
+This work has made use of the {\it galaXy} software (\url{https://github.com/sammarth-k/galaXy}), developed by Sammarth Kumar.
+```
+ 
+### Both
+```tex
+This work has made use of the {\it galaXy} software and data products (\url{https://github.com/sammarth-k/galaXy}), developed by Sammarth Kumar.
+```
+ 
 ## FAQs
 #### 1. Is the app connected to a database?
 No, the metadata is stored as a list of dictionaries (Python), which is later passed on the the JavaScript as an array of collections (equivalent of list and dictionary). Figures are stored on your device in ./app/images
