@@ -32,7 +32,8 @@ except:
 
 print(
     """
-Hello and welcome to galaXy! This program is capapble of generating an interactive database for your X-Ray files.
+Hello and welcome to galaXy! This program is capapble of generating an interactive database for your Chandra X-ray Observatory lightcurves!.
+
 Before we begin, we need the following details to be inputted by you:
     1. Binnings - the value (in seconds) of bins for lightcurves. Please enter comma separated values.
     2. File Deletion - Do you wish to delete your files after the web app has been generated? (y/n)
@@ -239,7 +240,7 @@ for file in files:
             plt.rc("xtick", labelsize=30)
             plt.rc("ytick", labelsize=22)
             plt.title(
-                f"Binned Photon Count {FILENAME} for {group_size} bins = {grpsize} s"
+                f"Binned Photon Count for {FILENAME} for {group_size} bins = {grpsize} s"
             )
             plt.plot(f, avg)
 
