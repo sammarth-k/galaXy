@@ -75,7 +75,7 @@ This work has made use of the {\it galaXy} software (\url{https://github.com/sam
  
 ### Both
 ```tex
-This work has made use of the {\it galaXy} software and data products (\url{https://github.com/sammarth-k/galaXy}), developed by Sammarth Kumar.
+This work has made use of the {\it galaXy} software and its data products (\url{https://github.com/sammarth-k/galaXy}), developed by Sammarth Kumar.
 ```
  
 ## FAQs
