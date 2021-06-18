@@ -57,7 +57,7 @@ Total runtime of the program was 300.62743496894836
 ```
 The runtime is in seconds (this was for 81 files in 3 different binnings)
 
-- Open `./app/index/html` once you get this message. The web app will be displayed in your default browser.
+- Open `./app/index.html` once you get this message. The web app will be displayed in your default browser.
 
 ## Acknowledgements
 If you use galaXy in your research, please acknowledge it as so:
