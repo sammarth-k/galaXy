@@ -69,12 +69,12 @@ This work has made use of the data products of {\it galaXy} (\url{https://github
  
 ### Software
 ```tex
-This work has made use of the {\it galaXy} software (\url{https://github.com/sammarth-k/galaXy}), developed by Sammarth Kumar.
+This work has made use of the {\it galaXy} (\url{https://github.com/sammarth-k/galaXy}), developed by Sammarth Kumar.
 ```
  
 ### Both
 ```tex
-This work has made use of the {\it galaXy} software and its data products (\url{https://github.com/sammarth-k/galaXy}), developed by Sammarth Kumar.
+This work has made use of the {\it galaXy} (\url{https://github.com/sammarth-k/galaXy}) software and its data products, developed by Sammarth Kumar.
 ```
  
 ## FAQs
