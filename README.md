@@ -1,8 +1,10 @@
 # galaXy
-
+<p align="center">
+ <a href="LICENSE.txt"><img src = "https://img.shields.io/github/license/sammarth-k/chandralc?logo=MIT"></a> <a herf="https://python.org" target="_blank"><img src="https://img.shields.io/badge/Made%20with-Python-306998.svg"></a> <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+ 
 galaXy is an automated software capable of processing thousands and thousands of raw lightcurves
 
-It is an upgraded version of <a href="https://github.com/sammarth-k/galaXy.lc">galaXy.lc</a> with a better UI, ML capabilities and more analysis features.
+It is an upgraded version of `<a href="https://github.com/sammarth-k/galaXy.lc">`galaXy.lc`</a>` with a better UI, ML capabilities and more analysis features.
 
 ## Documentation:
 
@@ -17,7 +19,6 @@ Some of the modules available in galX-C can be used independently for their purp
 #### fitsplots and txtplots
 
 #### fits2txt
-
 
 #### Requirements:
 

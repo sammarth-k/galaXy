@@ -1,5 +1,6 @@
 # custom modules
 import lcplot
+
 # Modules part of Standard Library
 import glob
 import os
@@ -14,14 +15,17 @@ try:
     import numpy as np
     import matplotlib.pyplot as plt
     import matplotlib
-    matplotlib.use('agg')
+
+    matplotlib.use("agg")
     plt.ioff()
 except:
-    print("""Please make sure the following modules have been installed:
+    print(
+        """Please make sure the following modules have been installed:
         1. pandas
         2. matplotlib
         3. astropy
-    """)
+    """
+    )
 
 print("Creating directories", end="\r")
 
@@ -48,12 +52,16 @@ except:
 # lightcurves
 print("Lightcurve plotting starting...\n")
 lc_type = input("Enter file extension of lightcurves (txt or fits): ")
-header = int(input("""Do your files have headers in the following format:
+header = int(
+    input(
+        """Do your files have headers in the following format:
     ['TIME_BIN', 'TIME_MIN', 'TIME', 'TIME_MAX', 'Count', 'STAT_ERR', 'AREA', 'exp', 'COUNT_RATE', 'COUNT_RATE_ERR']
 
 If yes, enter 1, else enter 0
 
-Enter option here: """))
+Enter option here: """
+    )
+)
 print()
 lcplot.plot(mode=lc_type.lower(), header=1)
 # machine learning

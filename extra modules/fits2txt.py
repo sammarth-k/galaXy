@@ -1,7 +1,7 @@
 def f2t():
-    '''
+    """
     This function converts all fits files in the current working directory to txt files
-    '''
+    """
     # importing modules
     try:
         from astropy.table import Table
@@ -25,8 +25,18 @@ def f2t():
         files.append(file)
 
     # list of columns
-    cols = ['TIME_BIN', 'TIME_MIN', 'TIME', 'TIME_MAX', 'COUNTS',
-            'STAT_ERR', 'AREA', 'EXPOSURE', 'COUNT_RATE', 'COUNT_RATE_ERR']
+    cols = [
+        "TIME_BIN",
+        "TIME_MIN",
+        "TIME",
+        "TIME_MAX",
+        "COUNTS",
+        "STAT_ERR",
+        "AREA",
+        "EXPOSURE",
+        "COUNT_RATE",
+        "COUNT_RATE_ERR",
+    ]
 
     # convert files
     for file in files:

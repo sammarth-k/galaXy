@@ -1,7 +1,5 @@
 def plot(binnings=[500, 1000], figsize=(10, 6), header=1, mode="fits"):
-    '''
-
-    '''
+    """ """
     # Modules part of Standard Library
     import glob
     import os
@@ -15,15 +13,18 @@ def plot(binnings=[500, 1000], figsize=(10, 6), header=1, mode="fits"):
         import numpy as np
         import matplotlib.pyplot as plt
         import matplotlib
-        matplotlib.use('agg')
+
+        matplotlib.use("agg")
         plt.ioff()
 
     except:
-        print("""Please make sure the following modules have been installed:
+        print(
+            """Please make sure the following modules have been installed:
             1. pandas
             2. matplotlib
             3. astropy
-        """)
+        """
+        )
 
     # to use module independently
     try:
@@ -68,8 +69,18 @@ def plot(binnings=[500, 1000], figsize=(10, 6), header=1, mode="fits"):
     for file in files:
 
         if mode == "txt":
-            cols = ['TIME_BIN', 'TIME_MIN', 'TIME', 'TIME_MAX', 'Count',
-                    'STAT_ERR', 'AREA', 'exp', 'COUNT_RATE', 'COUNT_RATE_ERR']
+            cols = [
+                "TIME_BIN",
+                "TIME_MIN",
+                "TIME",
+                "TIME_MAX",
+                "Count",
+                "STAT_ERR",
+                "AREA",
+                "exp",
+                "COUNT_RATE",
+                "COUNT_RATE_ERR",
+            ]
             df = pd.read_csv(file, skiprows=header, names=cols, sep=" ")
         elif mode == "fits":
             # get data from files
@@ -77,9 +88,9 @@ def plot(binnings=[500, 1000], figsize=(10, 6), header=1, mode="fits"):
             evt_data = Table(hdu_list[1].data)
 
             df = pd.DataFrame()
-            df['Count'] = list(evt_data['COUNTS'])
-            df['exp'] = list(evt_data['EXPOSURE'])
-            
+            df["Count"] = list(evt_data["COUNTS"])
+            df["exp"] = list(evt_data["EXPOSURE"])
+
         # to eliminate unwanted observations (if needed)
         threshold = 20  # set to -1 to include all files
 
@@ -89,9 +100,9 @@ def plot(binnings=[500, 1000], figsize=(10, 6), header=1, mode="fits"):
 
         # Creating counts array
         for index, row in df.iterrows():
-            if df['exp'][index] > 0:
+            if df["exp"][index] > 0:
                 count += df.Count[index]
-            elif df['exp'][index] == 0:
+            elif df["exp"][index] == 0:
                 count += 0
 
             counts.append(count)
@@ -120,7 +131,7 @@ def plot(binnings=[500, 1000], figsize=(10, 6), header=1, mode="fits"):
         # total counts / total time
         metadata["Count Rate"] = rate
 
-        filename = '_'.join(file)
+        filename = "_".join(file)
 
         if total_counts > threshold:
 
@@ -133,12 +144,12 @@ def plot(binnings=[500, 1000], figsize=(10, 6), header=1, mode="fits"):
             plt.xlabel("Time (ks)")
             plt.ylabel("Net Counts")
             plt.title(f"Cumulative Photon Count v/s Time Plot [{filename}]")
-            plt.rc('text', usetex=False)
-            plt.rc('font', family='sans serif')
-            plt.xlabel(r'Time (ks)', fontsize=25)
-            plt.ylabel(r'Photon Count', fontsize=25)
-            plt.rc('xtick', labelsize=30)
-            plt.rc('ytick', labelsize=22)
+            plt.rc("text", usetex=False)
+            plt.rc("font", family="sans serif")
+            plt.xlabel(r"Time (ks)", fontsize=25)
+            plt.ylabel(r"Photon Count", fontsize=25)
+            plt.rc("xtick", labelsize=30)
+            plt.rc("ytick", labelsize=22)
 
             # save figure
             f = plt.gcf()
@@ -149,13 +160,19 @@ def plot(binnings=[500, 1000], figsize=(10, 6), header=1, mode="fits"):
             for grpsize in binnings:
 
                 # filename
-                filesave = f"./app/images/lightcurves/{grpsize}/lightcurve_{itercount+1}.png"
+                filesave = (
+                    f"./app/images/lightcurves/{grpsize}/lightcurve_{itercount+1}.png"
+                )
 
                 photons_in_group = []
 
                 group_size = int(grpsize / chandra_bin)
 
-                temp1 = [df.Count[i] if df.exp[i] > 0 else 0 for i in range(len(df.Count)) if df.exp[i] > 0]
+                temp1 = [
+                    df.Count[i] if df.exp[i] > 0 else 0
+                    for i in range(len(df.Count))
+                    if df.exp[i] > 0
+                ]
 
                 # range: total number of df points over included bins --> temp3 of intervals
                 for j in range(len(temp1) // group_size):
@@ -164,12 +181,12 @@ def plot(binnings=[500, 1000], figsize=(10, 6), header=1, mode="fits"):
                     temp2 = 0
                     for k in range(group_size):
                         # sum of all photons within one interval
-                        temp2 = temp2 + temp1[j+k]
+                        temp2 = temp2 + temp1[j + k]
                     # appends that sum to a list
                     photons_in_group.append(temp2)
 
                 # group size commented out to get total counts per bin
-                avg_phot = np.array(photons_in_group)# /(3.241039999999654*group_size)
+                avg_phot = np.array(photons_in_group)  # /(3.241039999999654*group_size)
 
                 avg = [i for i in avg_phot for j in range(group_size)]
 
@@ -177,23 +194,24 @@ def plot(binnings=[500, 1000], figsize=(10, 6), header=1, mode="fits"):
                 f = np.array(range(len(avg)))
 
                 # adjusting for kiloseconds and multiplying each value in the array by the exposure time
-                f = f*chandra_bin/1000
+                f = f * chandra_bin / 1000
 
                 # customizing the plot
                 plt.figure(figsize=(15, 9))
-                plt.rc('text', usetex=False)
-                plt.rc('font', family='sans serif')
-                plt.xlabel(r'Time (ks)', fontsize=25)
-                plt.ylabel(r'Photon Count', fontsize=25)
-                plt.rc('xtick', labelsize=30)
-                plt.rc('ytick', labelsize=22)
+                plt.rc("text", usetex=False)
+                plt.rc("font", family="sans serif")
+                plt.xlabel(r"Time (ks)", fontsize=25)
+                plt.ylabel(r"Photon Count", fontsize=25)
+                plt.rc("xtick", labelsize=30)
+                plt.rc("ytick", labelsize=22)
                 plt.title(
-                    f"Binned Photon Count {filename} for {group_size} bins = {grpsize} s")
+                    f"Binned Photon Count {filename} for {group_size} bins = {grpsize} s"
+                )
                 plt.plot(f, avg)
 
                 # adjusting the scale of axis
                 upper = np.max(avg)
-                plt.yticks(np.arange(0, upper+1, 3))
+                plt.yticks(np.arange(0, upper + 1, 3))
 
                 f = plt.gcf()
 
@@ -209,16 +227,15 @@ def plot(binnings=[500, 1000], figsize=(10, 6), header=1, mode="fits"):
             pass
 
         # progress
-        print(f"Progress: {itercount+1} of {total_files} processed", end='\r')
+        print(f"Progress: {itercount+1} of {total_files} processed", end="\r")
 
         itercount += 1
 
         # dumping to JSON file (json module was creating problems)
         plotsdb = open("./app/databases/plotsdb.json", "a+")
-        plotsdb.write("\"" + f"{filename}" + "\"" +
-                      f":{metadata},".replace("'", "\""))
+        plotsdb.write('"' + f"{filename}" + '"' + f":{metadata},".replace("'", '"'))
         plotsdb.close()
 
     plotsdb = open("./app/databases/plotsdb.json", "a+")
-    plotsdb.write(f"\"Total files\": {total_files}" + "}")
+    plotsdb.write(f'"Total files": {total_files}' + "}")
     plotsdb.close()
