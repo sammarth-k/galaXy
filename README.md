@@ -13,22 +13,22 @@ Features:
 
 ## Search Bar
 - Icon
-<img src="mag.png">
+<img src="./images/mag.png">
 - Fill field
-<img src="search.png">
+<img src="./images/search.png">
 - Output
-<img src="result.png">
+<img src="./images/result.png">
 (hyperlink to the row)
 
 ## Bookmark
 - Click checkbox
 - The app will save the rows you mark in local storage, on your PC.
 
-<img src="highlighting.png">
+<img src="./images/highlighting.png">
 
 - localStorage
 
-<img src="localstorage.png">
+<img src="./images/localstorage.png">
 
 ## Web App Generation
 - Keep files to process in same directory as `main.py` and `htmlcode.py`
@@ -100,3 +100,4 @@ The app can become huge for large datasets. That's why in the `main.py` file I a
 ## Updates
 1. 23 April 2021: Drastic reduction in memory consumption
 2. 30 April 2021: Code optimization
+3. 10 August 2021: New Logo - Updated UI coming soon
