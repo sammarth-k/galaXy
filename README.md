@@ -3,7 +3,10 @@
 <img src="./images/logo.png">
 Build webapps automatically to view and analyze data. All you need are FITS files and a computer.
 
-Features:
+## Used By Scientists at
+<img src="https://jobs.diglib.org/wp-content/uploads/sites/20/wpjobboard-20/company/330/company-logo/logo.png" height="100px" width="auto">
+
+## Features
 - Search bar by coordinates
 - Mark sources on your copy of the web app
 - Automatic webapp generation - only fits files required
