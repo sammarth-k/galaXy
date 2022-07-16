@@ -4,7 +4,7 @@
 Build webapps automatically to view and analyze data. All you need are FITS files and a computer.
 
 ## Used By Scientists at
-<img src="https://jobs.diglib.org/wp-content/uploads/sites/20/wpjobboard-20/company/330/company-logo/logo.png" height="100rem" width="auto">
+<img src="https://yt3.ggpht.com/ytc/AKedOLTd0-5l_NKdxS-CXmXCtjtHNborOGD-NzLwp1Lo=s900-c-k-c0x00ffffff-no-rj" height="100rem" width="auto">
 
 ## Updates
 - Working on creating a more time and memory efficient script to be released soon.
